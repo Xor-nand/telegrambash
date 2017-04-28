@@ -8,7 +8,7 @@ from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler, Filters
 from subprocess import check_output, STDOUT, CalledProcessError
 
-token = open(".gitignore/token.txt", "r")
+token = open("token.txt", "r").read().strip()
 print ("\n\n\n{}\n\n".format(token))
 updater = Updater(token=token)
 bot = telegram.Bot(token=token)
