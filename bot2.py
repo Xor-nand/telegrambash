@@ -9,8 +9,8 @@ from telegram.ext import MessageHandler, Filters
 from subprocess import check_output, STDOUT, CalledProcessError
 
 token = open(".gitignore/token.txt", "r")
-updater = Updater(token='')
-bot = telegram.Bot(token='')
+updater = Updater(token=token)
+bot = telegram.Bot(token=token)
 
 GOD = 185198389
 sudoerfile = open("sudoers.txt", "r")
