@@ -1,1 +1,1 @@
-### this is a telegram bot to send message to he bash
+### this is a telegram bot to send message to bash
