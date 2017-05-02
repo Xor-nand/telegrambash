@@ -102,14 +102,14 @@ def logs(bot, update):
 
 	if update.message.chat_id in sudoers:
 		msg = update.message.text
-		sudochat = update.message.chat_id
-		logup("Someone", "triggered", "LOGGER")
-		bot.sendMessage(chat_id=sudochat, text="The logfile currently is :")
+		thischat = update.message.chat_id
+		logup(thischat, "triggered", "LOGGER")
+		bot.sendMessage(chat_id=thischat, text="The logfile currently is :")
 		answer = execute("cat bot.log")
 		if answer == "" :
-			bot.sendMessage(chat_id=sudochat, text="... Apparently empty" )
+			bot.sendMessage(chat_id=thischat, text="... Apparently empty" )
 		else :
-			bot.sendMessage(chat_id=sudochat, text=answer)
+			bot.sendMessage(chat_id=thischat, text=answer)
 	else :
 		bot.sendMessage(chat_id=update.message.chat_id, text="Sorry to tell you, but you're not allowed to execute this command, you can ask @xornand for the permission tho.")
 
@@ -143,7 +143,7 @@ dispatcher.add_handler(cmd_handler)
 createap_handler = CommandHandler('createap', createap)
 dispatcher.add_handler(createap_handler)
 
-logs_handler = MessageHandler(Filters.text, logs)
+logs_handler = MessageHandler('logs', logs)
 dispatcher.add_handler(logs_handler)
 
 echo_handler = MessageHandler(Filters.text, echo)
