@@ -1,4 +1,5 @@
-#usr/bin/python
+#!/usr/bin/python
+
 import telegram
 import subprocess
 import time
@@ -143,7 +144,7 @@ dispatcher.add_handler(cmd_handler)
 createap_handler = CommandHandler('createap', createap)
 dispatcher.add_handler(createap_handler)
 
-logs_handler = MessageHandler('logs', logs)
+logs_handler = CommandHandler('logs', logs)
 dispatcher.add_handler(logs_handler)
 
 echo_handler = MessageHandler(Filters.text, echo)
