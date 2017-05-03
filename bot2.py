@@ -3,6 +3,7 @@
 import telegram
 import subprocess
 import time
+import os
 
 from telegram.ext import Updater
 from telegram.ext import CommandHandler
@@ -124,6 +125,8 @@ def echo(bot, update):
 
 for sudoer in sudoers:
 	bot.sendMessage(chat_id=sudoer, text=" HELLO FUCKIN' WORLD! The Nor Xand bot just started. type /help to get a list of possible commands. Have fun fucker.")
+	if os.geteuid() == 0:
+		bot.sendMessage(chat_id=sudoer, text=" and please BE AWARE YOU ARE NOW IN CONSTANT SUDO")
 
 updater.start_polling()
 logup("polling started","sending welcome message", "(SYS)")
