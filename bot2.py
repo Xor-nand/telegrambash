@@ -30,6 +30,7 @@ for x in sudoerfile.read().split("\n"):
 		continue
 	sudoers.append(int(x))
 
+#### TODO : se l'output di un comando e' null messaggio relativo al problema "null"
 
 def logup(usr,txt,info):
 
@@ -37,7 +38,6 @@ def logup(usr,txt,info):
 	print (f"{usr} :: {txt} {info}")
 	logger.write(f" {usr} :: {txt} {info} \n")
 	logger.flush()
-
 
 def execute(words):
 	try:
@@ -96,7 +96,10 @@ def cmd(bot, update):
 			else :
 				answer = execute(words)
 				bot.sendMessage(chat_id=sudochat, text="executing command : {}".format(words))
-				bot.sendMessage(chat_id=sudochat, text="output:\n{}".format(answer))
+				if answer == "":
+					bot.sendMessage(chat_id=sudochat, text="output is apparently empty. No errors occourred.")
+				else :
+					bot.sendMessage(chat_id=sudochat, text="output:\n{}".format(answer))
 	else :
 		bot.sendMessage(chat_id=update.message.chat_id, text="Come on, I'm not this retarded.\n you're not going to send a command to my pc, sorry. ...")
 
